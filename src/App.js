@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Button, Container,Input,Group, List,SimpleGrid,ThemeIcon} from '@mantine/core';
+import {Button,Drawer, Container,Input,Group, List,SimpleGrid,ThemeIcon} from '@mantine/core';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
 import './App.css';
 import Card from "./components/Card";
@@ -35,7 +35,8 @@ const storeItems = [{
       src:"Ce",
       price:5,}]
 function App() {
-  let [basketItems,setbasketItems]=useState([])
+  let [opened ,setOpened] = useState(false);
+  let [basketItems,setBasketItems]=useState([])
   let [searchValue,setSearchValue] = useState("")
   let filteredItems =storeItems.filter((item) =>item.name.indexOf(searchValue) >= 0);
 
@@ -46,6 +47,7 @@ function App() {
   <Input  value={searchValue}  onChange={(e) => setSearchValue(e.target.value)} />
 </Input.Wrapper>
 <Button onClick={() => setSearchValue("")} >temizle</Button>
+<Button onClick={() => setOpened(true)} >Sepet</Button>
 </Group>
    <SimpleGrid cols={3} className="store">
 
@@ -55,14 +57,17 @@ function App() {
         key={name}
          name={name} 
          src={src}
-         onAdd ={() => setbasketItems([...basketItems,{name}])} />
+         onAdd ={() => setBasketItems([...basketItems,{name}])} />
 
         })  }
       </SimpleGrid>
-  
+      <Drawer opened={opened} onClose={() => setOpened(false) }
+      title="Sepetim">
+        
       <List className="List"
       spacing="xs"
       size="sm"
+      
       center
       icon={
         <ThemeIcon color="teal" size={24} radius="xl">
@@ -75,6 +80,9 @@ function App() {
            ))}
     
     </List>
+      </Drawer>
+  
+      
       </Container>
       
   );
