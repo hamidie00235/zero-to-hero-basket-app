@@ -1,5 +1,5 @@
 import {useState} from 'react';
-import {Button,Drawer, Container,Input,Group, List,SimpleGrid,ThemeIcon} from '@mantine/core';
+import {Button,Drawer, Container,Input,Indicator,Group, List,SimpleGrid,ThemeIcon} from '@mantine/core';
 import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
 import './App.css';
 import Card from "./components/Card";
@@ -47,7 +47,9 @@ function App() {
   <Input  value={searchValue}  onChange={(e) => setSearchValue(e.target.value)} />
 </Input.Wrapper>
 <Button onClick={() => setSearchValue("")} >temizle</Button>
+<Indicator color="red" label={basketItems.length} size={22}>
 <Button onClick={() => setOpened(true)} >Sepet</Button>
+</Indicator>
 </Group>
    <SimpleGrid cols={3} className="store">
 
