@@ -12,6 +12,12 @@
     animation: App-logo-spin infinite 20s linear;
   }
 }
+.store{
+  padding:20px;
+}
+.List{
+  padding:20px;
+}
 
 .App-header {
   background-color: #282c34;
