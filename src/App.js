@@ -1,6 +1,6 @@
 import {useState} from 'react';
 import {Button,Drawer, Container,Input,Indicator,Group, List,SimpleGrid,ThemeIcon} from '@mantine/core';
-import { IconCircleCheck, IconCircleDashed } from '@tabler/icons-react';
+import { IconCircleCheck, IconBasket,IconCircleDashed } from '@tabler/icons-react';
 import './App.css';
 import Card from "./components/Card";
 const storeItems = [{
@@ -48,7 +48,9 @@ function App() {
 </Input.Wrapper>
 <Button onClick={() => setSearchValue("")} >temizle</Button>
 <Indicator color="red" label={basketItems.length} size={22}>
-<Button onClick={() => setOpened(true)} >Sepet</Button>
+<Button onClick={() => setOpened(true)} >
+  <IconBasket size={22}/>
+</Button>
 </Indicator>
 </Group>
    <SimpleGrid cols={3} className="store">
